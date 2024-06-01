@@ -86,7 +86,8 @@ flutter:
     - assets/avaters/
     - assets/Backgrounds/
     - assets/icons/
-    - assets/RiveAssets/
+    - assets/TableTenis/
+    - assets/categories/
   # For details regarding adding  from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
 
