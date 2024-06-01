@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:test_project/screens/match_screen.dart';
+import 'package:test_project/screens/single_match/match_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   @override

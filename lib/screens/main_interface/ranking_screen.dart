@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:test_project/screens/home_screen.dart';
@@ -62,39 +64,16 @@ class _RankingScreenState extends State<RankingScreen> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: const Row(
-          children: [
-            CircleAvatar(
-              radius: 25,
-              backgroundImage: AssetImage("assets/logo.jpg"),
+        title: const Center(
+              child: Text(
+                'Bảng Xếp Hạng',
+                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.black, decoration: TextDecoration.none),
+              ),
             ),
-            SizedBox(width: 10),
-            Text(
-              'PingLog',
-              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.black, decoration: TextDecoration.none),
-            ),
-            Spacer(),
-            CircleAvatar(
-              radius: 15,
-              backgroundImage: AssetImage("assets/logo.jpg"),
-            ),
-          ],
-        ),
       ),
       body: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: Container(
-                        alignment: Alignment.centerLeft,
-                        child: Center(child: Text('RANKING',
-                          style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.green),)),
-                      ),
-                    ),
-                  ],
-                ),
                 SizedBox(height: 10,),
                 Padding(
                   padding: const EdgeInsets.only(left: 10),
@@ -109,7 +88,7 @@ class _RankingScreenState extends State<RankingScreen> {
                           }, // set text color to white
                           isSelected: selectedIndex == 0,
                           child: const Text('MEN',
-                              style: TextStyle(color: Colors.black, fontSize: 15)),
+                              style: TextStyle(color: Colors.black, fontSize: 18)),
                         ),
                         const SizedBox(height: 20),
                         TransparentButton(
@@ -120,30 +99,48 @@ class _RankingScreenState extends State<RankingScreen> {
                           }, // set text color to white
                           isSelected: selectedIndex == 1,
                           child: const Text('WOMEN',
-                              style: TextStyle(color: Colors.black, fontSize: 15)),
-                        ),
-                        const SizedBox(height: 20),
-                        TransparentButton(
-                          onPressed: () {
-                            setState(() {
-                              selectedIndex = 2;
-                            });
-                          }, // set text color to white
-                          isSelected: selectedIndex == 2,
-                          child: const Text('TEST',
-                              style: TextStyle(color: Colors.black, fontSize: 15)),
+                              style: TextStyle(color: Colors.black, fontSize: 18)),
                         ),
                       ],
                   ),
                 ),
-                SizedBox(height: 15),
+                SizedBox(height: 18),
+                const Padding(
+                  padding: EdgeInsets.only(left: 35.0),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        flex: 2,
+                          child: Text('Tuyển thủ',style: TextStyle(fontSize: 18),)
+                      ),
+                      SizedBox(width: 70,),
+                      Expanded(
+                        flex: 2,
+                          child: Text('Xếp hạng',style: TextStyle(fontSize: 18))
+                      ),
+                      SizedBox(width: 12,),
+                      Expanded(
+                        flex: 2,
+                          child: Text('Trận thắng',style: TextStyle(fontSize: 18))
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 5,),
+                Container(
+                  margin: EdgeInsets.only(bottom: 2,left: 10,right: 10),
+                  height: 4,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade600,
+                    borderRadius: BorderRadius.all(Radius.circular(12)),
+                  ),
+                ),
                 Expanded(
                     child: buildSelectedContent(selectedIndex)
                 ),
               ],
             ),
-
-
     );
   }
 }

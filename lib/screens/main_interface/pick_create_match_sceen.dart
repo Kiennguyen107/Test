@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:test_project/screens/pick_cham_screen.dart';
+import 'package:test_project/screens/tounament/pick_cham_screen.dart';
 
-import 'match_screen.dart';
+import 'single_match/match_screen.dart';
 
 
-class CreateMatchScreen extends StatefulWidget {
-  const CreateMatchScreen({super.key});
+class PickCreateMatchScreen extends StatefulWidget {
+  const PickCreateMatchScreen({super.key});
 
   @override
-  State<CreateMatchScreen> createState() => _CreateMatchScreenState();
+  State<PickCreateMatchScreen> createState() => _PickCreateMatchScreenState();
 }
 
-class _CreateMatchScreenState extends State<CreateMatchScreen> {
+class _PickCreateMatchScreenState extends State<PickCreateMatchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Center(child: Text('Tạo Trận Đấu', style: TextStyle(fontSize: 30),)),
+        title: Center(child: Text('Tạo Trận Đấu', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.black, decoration: TextDecoration.none),)),
         // backgroundColor: Colors.green,
       ),
       body: CustomScrollView(
@@ -26,7 +26,7 @@ class _CreateMatchScreenState extends State<CreateMatchScreen> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(height: 25,),
+                  SizedBox(height: 20,),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Row(
@@ -64,7 +64,7 @@ class _CreateMatchScreenState extends State<CreateMatchScreen> {
                               Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => SelectionScreen()
+                                      builder: (context) => ControlTourScreen()
                                     ),
                                   );
                             },
