@@ -1,44 +1,47 @@
 import 'package:flutter/material.dart';
-
-class SampleItem {
-  final String id;
-  final String name;
-
-  SampleItem({required this.id, required this.name});
-}
+import '../../model/club_model.dart';
 
 class SampleItemWidget extends StatelessWidget {
-  final List<String> imagePaths = [
-    'assets/avaters/Avatar Default.jpg',
-    'assets/avaters/Avatar 3.jpg',
-    'assets/avaters/Avatar 6.jpg',
-    // Thêm các đường dẫn ảnh khác ở đây
-  ];
-  final SampleItem item;
-  final void Function(SampleItem)? onTap;
+  final Member member;
+  final int index;
+  final void Function(Member)? onTap;
 
   SampleItemWidget({
     Key? key,
-    required this.item,
+    required this.member,
+    required this.index,
     this.onTap,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      leading: CircleAvatar(
+        foregroundImage: AssetImage(member.image),
+      ),
       title: Row(
         children: [
-          Text(item.name, style: TextStyle(fontSize: 20),),
-          SizedBox(width: 100,),
-          Icon(Icons.favorite),
+          Expanded(
+            flex: 2,
+            child: Text(
+              member.name,
+              style: TextStyle(fontSize: 18),
+            ),
+          ),
+          Expanded(
+            flex: 1,
+            child: Text(
+              (index + 1).toString(),
+              style: TextStyle(fontSize: 18),
+            ),
+          ),
         ],
       ),
-      leading: CircleAvatar(
-        foregroundImage: AssetImage(imagePaths[int.parse(item.id) - 1]), // Truy cập vào đường dẫn hình ảnh tương ứng với mục
+      onTap: onTap != null ? () => onTap!(member) : null,
+      trailing: Text(
+        member.win_rate,
+        style: TextStyle(fontSize: 18),
       ),
-      onTap: onTap != null ? () => onTap!(item) : null,
-      trailing: Icon(Icons.keyboard_arrow_right),
     );
-
   }
 }

@@ -38,13 +38,38 @@ class _PlayerInputScreenState extends State<PlayerInputScreen> {
     super.dispose();
   }
 
+  void _showAlertDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Thử lại'),
+          content: Text('Vui lòng nhập đầy đủ tên người chơi.'),
+          actions: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   void _generateBracket() {
     List<String> players = _controllers.map((controller) => controller.text).toList();
-    players.shuffle(Random()); // Shuffle the players list randomly
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => TourBeginMatch(players: players)),
-    );
+
+    if (players.contains('')) {
+      _showAlertDialog(context);
+    } else {
+      players.shuffle(Random()); // Shuffle the players list randomly
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => TourBeginMatch(players: players)),
+      );
+    }
   }
 
   @override

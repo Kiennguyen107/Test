@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../widgets/plus_score.dart';
-import '../widgets/test_nav_bar.dart';
+import '../../widgets/match_controller/plus_score.dart';
+import '../../widgets/nav_bar.dart';
 
 class OnMatchScreen extends StatefulWidget {
   late dynamic selectedTeam1;
@@ -360,7 +360,7 @@ class _OnMatchScreenState extends State<OnMatchScreen> {
                       onTap: (){
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => BottomNavWithAnimatedIcons()),
+                          MaterialPageRoute(builder: (context) => TestBottomNavWithAnimatedIcons()),
                         );
                       },
                       child: const Center(

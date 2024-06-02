@@ -194,7 +194,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           color: Colors.green,
                                         ),
                                         SizedBox(width: 5),
-                                        Expanded(
+                                        const Expanded(
                                           child: Text(
                                             'Chodov',
                                             style: TextStyle(fontSize: 12),
@@ -212,7 +212,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           color: Colors.green,
                                         ),
                                         SizedBox(width: 5),
-                                        Expanded(
+                                        const Expanded(
                                           child: Text(
                                             'TTC Ostrava',
                                             style: TextStyle(fontSize: 12),

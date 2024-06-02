@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:test_project/screens/match_screen.dart';
-import 'package:test_project/screens/on_match_screen.dart';
+import 'package:test_project/screens/single_match/match_screen.dart';
+import 'package:test_project/screens/single_match/on_match_screen.dart';
 
-import '../lib/screens/home_screen.dart';
+import '../lib/screens/main_interface/home_screen.dart';
 
 
 class NavBarRoots extends StatefulWidget {

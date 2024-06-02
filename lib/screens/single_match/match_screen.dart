@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:test_project/screens/on_match_screen.dart';
-import 'package:test_project/widgets/pick_team.dart';
+import 'package:test_project/screens/single_match/on_match_screen.dart';
+import 'package:test_project/widgets/match_controller/pick_team.dart';
 
 class MatchScreen extends StatefulWidget {
   const MatchScreen({super.key});

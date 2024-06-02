@@ -26,12 +26,12 @@ class _TransparentButtonState extends State<TransparentButton> {
             color: widget.isSelected ? Colors.orange.withOpacity(0.3) : Colors.transparent,
             borderRadius: BorderRadius.all(Radius.circular(10)),
           ),
-          height: 30.0,
-          width: 100.0,
+          height: 37.0,
+          width: 120.0,
         ),
         Container(
           height: 3.0,
-          width: 87.0,
+          width: 100.0,
           color: widget.isSelected ? Colors.orange : Colors.transparent,
         ),
         Positioned.fill(

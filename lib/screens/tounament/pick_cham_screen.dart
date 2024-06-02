@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:test_project/screens/tournament_match_screen.dart';
+import 'package:test_project/screens/tounament/tournament_match_screen.dart';
 
-class PickChamScreen extends StatefulWidget {
+class ControlTourScreen extends StatefulWidget {
   @override
-  _PickChamScreenState createState() => _PickChamScreenState();
+  _ControlTourScreenState createState() => _ControlTourScreenState();
 }
 
 enum num_match_Selection { single, triple, penta }
 
-class _PickChamScreenState extends State<PickChamScreen> {
+class _ControlTourScreenState extends State<ControlTourScreen> {
   int _numberOfPlayers = 8; // Default number of players
   DateTime _selectedDate = DateTime.now();
   int _numberOfSets = 3; // Default number of sets
