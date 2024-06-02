@@ -1,11 +1,14 @@
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
 import 'package:test_project/screens/single_match/match_screen.dart';
 import 'package:test_project/screens/single_match/on_match_screen.dart';
 
-import '../lib/screens/main_interface/home_screen.dart';
-
+import 'package:test_project/screens/main_interface/home_screen.dart';
 
 class NavBarRoots extends StatefulWidget {
+  const NavBarRoots({super.key});
+
   @override
   State<NavBarRoots> createState() => _NavBarRootsState();
 }
@@ -13,9 +16,9 @@ class NavBarRoots extends StatefulWidget {
 class _NavBarRootsState extends State<NavBarRoots> {
   int _selectedIndex = 0;
   final _screens = [
-    HomeScreen(),
-    MatchScreen(),
-    OnMatchScreen()
+    const HomeScreen(),
+    const MatchScreen(),
+    // OnMatchScreen()
   ];
 
   // void _onItemTapped(int index) {
@@ -34,7 +37,7 @@ class _NavBarRootsState extends State<NavBarRoots> {
         backgroundColor: Colors.white, // Màu nền của thanh bar dưới cùng
         selectedItemColor: Colors.blue, // Màu của mục được chọn
         unselectedItemColor: Colors.grey, // Màu của các mục không được chọn
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
