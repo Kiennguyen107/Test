@@ -1,27 +1,45 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
 import 'package:flutter/material.dart';
 import 'package:test_project/screens/login_interface/login_page.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart'; // Để lưu thêm thông tin người dùng
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
+
+  @override
+  _SignUpScreenState createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
+  final _auth = FirebaseAuth.instance;
+  final _firestore =
+      FirebaseFirestore.instance; // Để lưu thêm thông tin người dùng
+  String username = '';
+  String email = '';
+  String password = '';
+  String retypePassword = '';
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: Scaffold(
-      body: Container(
-        margin: EdgeInsets.all(24),
-        child:
-            Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
-          _header(context),
-          _inputFields(context),
-          _loginInfo(context),
-        ]),
+      child: Scaffold(
+        body: Container(
+          margin: const EdgeInsets.all(24),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              _header(context),
+              _inputFields(context),
+              _loginInfo(context),
+            ],
+          ),
+        ),
       ),
-    ));
+    );
   }
 
-  _header(context) {
-    return Column(
+  Widget _header(context) {
+    return const Column(
       children: [
         Text(
           "Create Account",
@@ -32,7 +50,7 @@ class SignUpScreen extends StatelessWidget {
     );
   }
 
-  _inputFields(context) {
+  Widget _inputFields(context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
@@ -41,13 +59,18 @@ class SignUpScreen extends StatelessWidget {
             hintText: "Username",
             fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
             filled: true,
-            prefixIcon: Icon(Icons.person),
+            prefixIcon: const Icon(Icons.person),
             border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(18),
                 borderSide: BorderSide.none),
           ),
+          onChanged: (value) {
+            setState(() {
+              username = value;
+            });
+          },
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         TextField(
@@ -55,13 +78,18 @@ class SignUpScreen extends StatelessWidget {
             hintText: "Email id",
             fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
             filled: true,
-            prefixIcon: Icon(Icons.email_outlined),
+            prefixIcon: const Icon(Icons.email_outlined),
             border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(18),
                 borderSide: BorderSide.none),
           ),
+          onChanged: (value) {
+            setState(() {
+              email = value;
+            });
+          },
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         TextField(
@@ -69,14 +97,19 @@ class SignUpScreen extends StatelessWidget {
             hintText: "Password",
             fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
             filled: true,
-            prefixIcon: Icon(Icons.password_outlined),
+            prefixIcon: const Icon(Icons.password_outlined),
             border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(18),
                 borderSide: BorderSide.none),
           ),
           obscureText: true,
+          onChanged: (value) {
+            setState(() {
+              password = value;
+            });
+          },
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         TextField(
@@ -84,41 +117,76 @@ class SignUpScreen extends StatelessWidget {
             hintText: "Retype Password",
             fillColor: Theme.of(context).primaryColor.withOpacity(0.1),
             filled: true,
-            prefixIcon: Icon(Icons.password_outlined),
+            prefixIcon: const Icon(Icons.password_outlined),
             border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(18),
                 borderSide: BorderSide.none),
           ),
           obscureText: true,
+          onChanged: (value) {
+            setState(() {
+              retypePassword = value;
+            });
+          },
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
         ElevatedButton(
           onPressed: () {
+            _signUp();
           },
-          child: Text(
+          style: ElevatedButton.styleFrom(
+            shape: const StadiumBorder(),
+            padding: const EdgeInsets.symmetric(vertical: 16),
+          ),
+          child: const Text(
             "Sign Up",
             style: TextStyle(fontSize: 20),
-          ),
-          style: ElevatedButton.styleFrom(
-            shape: StadiumBorder(),
-            padding: EdgeInsets.symmetric(vertical: 16),
           ),
         )
       ],
     );
   }
 
-  _loginInfo(context) {
+  void _signUp() async {
+    if (password != retypePassword) {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text("Passwords do not match!"),
+      ));
+      return;
+    }
+    try {
+      final newUser = await _auth.createUserWithEmailAndPassword(
+          email: email, password: password);
+      // Lưu thêm thông tin người dùng vào Firestore
+      await _firestore.collection('players').doc(newUser.user!.uid).set({
+        'username': username,
+        'email': email,
+      });
+
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => const LoginPage()));
+    } catch (e) {
+      print(e);
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Error: $e"),
+      ));
+    }
+  }
+
+  Widget _loginInfo(context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text("Already have an account?"),
-        TextButton(onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
-        },
-            child: Text("Login"))
+        const Text("Already have an account?"),
+        TextButton(
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const LoginPage()));
+          },
+          child: const Text("Login"),
+        )
       ],
     );
   }
