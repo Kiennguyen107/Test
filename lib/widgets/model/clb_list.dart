@@ -1,11 +1,13 @@
 class Member {
-  final String image;
   final String name;
   final String role;
-  final String win_rate;
 
-  Member({required this.image,required this.name, required this.role, required this.win_rate});
+  Member({
+    required this.name,
+    required this.role,
+  });
 }
+
 class Club {
   final String name;
   final String owner;
@@ -27,4 +29,3 @@ class Club {
     required this.activeYears,
   });
 }
-

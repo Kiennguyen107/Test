@@ -30,6 +30,7 @@ class ClbConstants {
     description: "A great club for ping pong enthusiasts.",
     members: MemberList,
     imageUrl: 'assets/categories/book_img.png',
+    foundingDate: DateTime.now(), activeYears: 2014,
   );
 
   static List<Member> MemberList = [

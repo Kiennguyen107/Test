@@ -4,10 +4,12 @@ import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:rive/rive.dart';
 import 'package:test_project/screens/main_interface/pick_create_match_sceen.dart';
-import 'package:test_project/screens/main_interface/ranking_screen.dart';
+import 'package:test_project/screens/main_interface/clb_screen.dart';
 import 'package:test_project/screens/main_interface/test_home_screen.dart';
 import 'package:test_project/screens/main_interface/user_screen.dart';
+import '../screens/clb_admin/input_score_screen.dart';
 import '../screens/main_interface/notification_screen.dart';
+import '../screens/main_interface/unknow_clb.dart';
 import 'controllers/page_navigation_provider.dart';
 
 const Color bottomNavBgColor = Color(0xFF17203A);
@@ -26,18 +28,30 @@ class _TestBottomNavWithAnimatedIconsState extends State<TestBottomNavWithAnimat
   late List<Widget> pages;
   late PageController controller;
   int selectedNavIndex = 2;
+  int id_right = 1;
 
   @override
   void initState() {
     super.initState();
+    if(id_right==1){
     pages = [
       RankingScreen(),
       PickCreateMatchScreen(),
       TestHomeScreen(),
       ClubNotificationScreen(),
-      UserScreen(),
-      // InputScore(),
+      // UserScreen(),
+      InputScore(),
     ];
+    }else{
+      pages = [
+        UnknowClb(),
+        PickCreateMatchScreen(),
+        TestHomeScreen(),
+        UnknowClb(),
+        UserScreen(),
+        // InputScore(),
+      ];
+    }
     controller = PageController(initialPage: selectedNavIndex);
   }
 

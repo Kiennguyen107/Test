@@ -1,14 +1,34 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../widgets/components/consts/clb_consts/clb_list_constants.dart';
+import '../../widgets/model/clb_list.dart';
+import '../clb_admin/clb.dart';
+import '../clb_admin/creat_club_screen.dart';
 
-class UserScreen extends StatelessWidget {
+class UserScreen extends StatefulWidget {
+  @override
+  _UserScreenState createState() => _UserScreenState();
+}
+
+class _UserScreenState extends State<UserScreen> {
   final bool isLoggedIn = true; // Giả định người dùng đã đăng nhập hoặc chưa
+  final List<Club> clubs = ClbListConstants.clubs;
   final Map<String, dynamic> userData = {
     'profileImage': 'assets/profile.png', // Đường dẫn ảnh trong máy
     'fullName': 'John Doe',
     'email': 'johndoe@example.com',
+    'clb': 'CLB Bóng Bàn Resco',
   };
+
+  void navigateToClubDetails(int index) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ClubDetailsScreen(club: clubs[index]),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,14 +84,15 @@ class UserScreen extends StatelessWidget {
           ),
           InkWell(
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                return Scaffold(
-                  appBar: AppBar(
-                    title: Text("Hello"),
-                  ),
-                  body: Center(child: Text("Hello")),
-                );
-              }));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) {
+                    return Scaffold(
+                      appBar: AppBar(
+                        title: Text("Hello"),
+                      ),
+                      body: Center(child: Text("Hello")),
+                    );
+                  }));
             },
             child: IntrinsicWidth(
               child: IntrinsicHeight(
@@ -80,12 +101,13 @@ class UserScreen extends StatelessWidget {
                     color: Colors.green,
                     borderRadius: BorderRadius.circular(4),
                   ),
-                  child: const Center(
+                  child: Center(
                     child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+                      padding: EdgeInsets.symmetric(
+                          horizontal: 16.0, vertical: 8.0),
                       child: Text(
-                        'CLB Bóng Bàn Resco',
-                        style: TextStyle(
+                        userData['clb'],
+                        style: const TextStyle(
                           color: Colors.white,
                           letterSpacing: 4,
                           fontWeight: FontWeight.bold,
@@ -115,8 +137,11 @@ class UserScreen extends StatelessWidget {
             title: Text('Thông tin cá nhân'),
           ),
           ListTile(
+            onTap: () {
+              navigateToClubDetails;
+            },
             leading: Icon(Icons.shop),
-            title: Text('Thành viên câu lạc bộ'),
+            title: Text('Thông tin câu lạc bộ'),
           ),
           ListTile(
             onTap: () {

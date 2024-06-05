@@ -11,7 +11,7 @@ enum num_match_Selection { single, triple, penta }
 class _ControlTourScreenState extends State<ControlTourScreen> {
   int _numberOfPlayers = 8; // Default number of players
   DateTime _selectedDate = DateTime.now();
-  int _numberOfSets = 3; // Default number of sets
+  late int _numberOfSets = 1; // Default number of sets
   TextEditingController _playerController = TextEditingController();
 
   @override
@@ -39,7 +39,6 @@ class _ControlTourScreenState extends State<ControlTourScreen> {
       });
   }
 
-  int? numberMatch;
 
   num_match_Selection selected_match = num_match_Selection.single;
 
@@ -112,7 +111,7 @@ class _ControlTourScreenState extends State<ControlTourScreen> {
                           onTap: () {
                             setState(() {
                               selected_match = num_match_Selection.single;
-                              numberMatch = 1;
+                              _numberOfSets = 1;
                             });
                           },
                           child: buildCardMatch(num_match_Selection.single),
@@ -122,7 +121,7 @@ class _ControlTourScreenState extends State<ControlTourScreen> {
                           onTap: () {
                             setState(() {
                               selected_match = num_match_Selection.triple;
-                              numberMatch = 3;
+                              _numberOfSets = 3;
                             });
                           },
                           child: buildCardMatch(num_match_Selection.triple),
@@ -132,7 +131,7 @@ class _ControlTourScreenState extends State<ControlTourScreen> {
                           onTap: () {
                             setState(() {
                               selected_match = num_match_Selection.penta;
-                              numberMatch = 5;
+                              _numberOfSets = 5;
                             });
                           },
                           child: buildCardMatch(num_match_Selection.penta),

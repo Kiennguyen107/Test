@@ -1,7 +1,5 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
-import 'package:test_project/screens/main_interface/pick_create_match_sceen.dart';
-import 'package:test_project/screens/main_interface/ranking_screen.dart';
 import '../../widgets/components/consts/app_constants.dart';
 import '../../widgets/components/consts/ctg_rounded_widget.dart';
 import '../../widgets/components/consts/title_text.dart';
