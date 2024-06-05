@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:test_project/screens/main_interface/home_screen.dart';
 import '../../widgets/components/consts/clb_consts/clb_constants.dart';
 import '../../widgets/components/ranking/custom_ranking.dart';
+import '../../widgets/components/ranking/list_member.dart';
 import '../../widgets/components/ranking/list_ranking.dart';
 import '../../widgets/model/club_model.dart';
 
@@ -94,7 +94,48 @@ class _RankingScreenState extends State<RankingScreen> {
         //           },
         //         );
       case 1:
-        return Container();
+        return CustomScrollView(
+          slivers: [
+            const SliverToBoxAdapter(
+              child: Padding(
+                padding: EdgeInsets.only(left: 35.0, top: 16.0, bottom: 8.0),
+                child: Row(
+                  children: [
+                    Expanded(
+                      flex: 2,
+                      child: Text('Tuyển thủ', style: TextStyle(fontSize: 18)),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: Container(
+                margin: EdgeInsets.only(bottom: 2, left: 10, right: 10),
+                height: 4,
+                width: MediaQuery.of(context).size.width,
+                decoration: BoxDecoration(
+                  color: Colors.grey.shade600,
+                  borderRadius: BorderRadius.all(Radius.circular(12)),
+                ),
+              ),
+            ),
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                    (context, index) {
+                  return SampleMemberWidget(
+                    member: items[index],
+                    index: index,
+                    onTap: (item) {
+                      print(item.name); // In ra tên của mục được nhấn
+                    },
+                  );
+                },
+                childCount: items.length,
+              ),
+            ),
+          ],
+        );
       default:
         return Container();
     }

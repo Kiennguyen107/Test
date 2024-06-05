@@ -80,7 +80,7 @@ class TestHomeScreen extends StatelessWidget {
                 height: size.height * 0.2,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
-                  itemCount: 10, // Chỉnh sửa lại số lượng nếu cần
+                  itemCount: 6, // Chỉnh sửa lại số lượng nếu cần
                   itemBuilder: (context, index) {
                     return Container(
                       width: size.width * 0.4,
