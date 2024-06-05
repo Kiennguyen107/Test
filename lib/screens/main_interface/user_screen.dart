@@ -6,6 +6,31 @@ import '../../widgets/model/clb_list.dart';
 import '../clb_admin/clb.dart';
 import '../clb_admin/creat_club_screen.dart';
 
+class User {
+  final String profileImage;
+  final String fullName;
+  final String email;
+  final String sdt;
+  final String clb;
+
+  User({
+    required this.profileImage,
+    required this.fullName,
+    required this.email,
+    required this.sdt,
+    required this.clb,
+  });
+}
+
+// Tạo một instance của User
+final User userData = User(
+  profileImage: 'assets/profile.png', // Đường dẫn ảnh trong máy
+  fullName: 'John Doe',
+  email: 'johndoe@example.com',
+  sdt: '0123456789',
+  clb: 'CLB Bóng Bàn Resco',
+);
+
 class UserScreen extends StatefulWidget {
   @override
   _UserScreenState createState() => _UserScreenState();
@@ -14,12 +39,6 @@ class UserScreen extends StatefulWidget {
 class _UserScreenState extends State<UserScreen> {
   final bool isLoggedIn = true; // Giả định người dùng đã đăng nhập hoặc chưa
   final List<Club> clubs = ClbListConstants.clubs;
-  final Map<String, dynamic> userData = {
-    'profileImage': 'assets/profile.png', // Đường dẫn ảnh trong máy
-    'fullName': 'John Doe',
-    'email': 'johndoe@example.com',
-    'clb': 'CLB Bóng Bàn Resco',
-  };
 
   void navigateToClubDetails(int index) {
     Navigator.push(
@@ -59,13 +78,13 @@ class _UserScreenState extends State<UserScreen> {
             child: CircleAvatar(
               radius: 64,
               backgroundColor: Colors.yellow.shade900,
-              backgroundImage: AssetImage(userData['profileImage']),
+              backgroundImage: AssetImage(userData.profileImage),
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              userData['fullName'],
+              userData.fullName,
               style: TextStyle(
                 fontSize: 17,
                 fontWeight: FontWeight.bold,
@@ -75,7 +94,7 @@ class _UserScreenState extends State<UserScreen> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              userData['email'],
+              userData.email,
               style: TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.bold,
@@ -106,7 +125,7 @@ class _UserScreenState extends State<UserScreen> {
                       padding: EdgeInsets.symmetric(
                           horizontal: 16.0, vertical: 8.0),
                       child: Text(
-                        userData['clb'],
+                        userData.clb,
                         style: const TextStyle(
                           color: Colors.white,
                           letterSpacing: 4,
@@ -121,37 +140,27 @@ class _UserScreenState extends State<UserScreen> {
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(15.0),
+          const Padding(
+            padding: EdgeInsets.all(15.0),
             child: Divider(
               thickness: 2,
               color: Colors.grey,
             ),
           ),
-          ListTile(
+          const ListTile(
             leading: Icon(Icons.settings),
-            title: Text('Cài đặt'),
+            title: Text('Thông tin câu lạc bộ'),
           ),
-          ListTile(
-            leading: Icon(Icons.phone),
+          const ListTile(
+            leading: Icon(Icons.person),
             title: Text('Thông tin cá nhân'),
           ),
           ListTile(
             onTap: () {
               navigateToClubDetails;
             },
-            leading: Icon(Icons.shop),
+            leading: Icon(Icons.people),
             title: Text('Thông tin câu lạc bộ'),
-          ),
-          ListTile(
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) {
-                    return Text("");
-                  }));
-            },
-            leading: Icon(CupertinoIcons.shopping_cart),
-            title: Text('Order'),
           ),
           ListTile(
             onTap: () async {

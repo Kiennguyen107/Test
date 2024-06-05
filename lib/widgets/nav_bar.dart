@@ -39,8 +39,8 @@ class _TestBottomNavWithAnimatedIconsState extends State<TestBottomNavWithAnimat
       PickCreateMatchScreen(),
       TestHomeScreen(),
       ClubNotificationScreen(),
-      // UserScreen(),
-      InputScore(),
+      UserScreen(),
+      // InputScore(),
     ];
     }else{
       pages = [
