@@ -141,14 +141,13 @@ class _TestBottomNavWithAnimatedIconsState extends State<TestBottomNavWithAnimat
               label: "Home",
             ),
             const NavigationDestination(
-              selectedIcon: Icon(IconlyBold.notification),
+              selectedIcon: Icon(Icons.calendar_today), // Biểu tượng lịch khi được chọn
               icon: Badge(
                 backgroundColor: Colors.blue,
                 textColor: Colors.black,
-                label: Text("2"),
-                child: Icon(IconlyLight.notification),
+                child: Icon(Icons.calendar_today_outlined), // Biểu tượng lịch khi không được chọn
               ),
-              label: "Notification",
+              label: "Calender",
             ),
             const NavigationDestination(
               selectedIcon: Icon(IconlyBold.profile),

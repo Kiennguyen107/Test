@@ -24,6 +24,7 @@ class _MembershipFeeState extends State<MembershipFee> {
   final List<Member> items = Membership.members;
   double totalFee = 0.0;
   double individualFee = 0.0;
+  String selectedMonth = '1'; // Default to January
 
   @override
   void initState() {
@@ -37,6 +38,18 @@ class _MembershipFeeState extends State<MembershipFee> {
   void updateIndividualFee() {
     setState(() {
       individualFee = totalFee / items.length;
+    });
+  }
+
+  void filterItemsByMonth(String month) {
+    // Logic to filter items by month
+    // Here, you need to update the items list based on the selected month
+    // This is a placeholder for your filtering logic
+    setState(() {
+      // Example: Filtering logic (you should implement your actual logic)
+      items.forEach((item) {
+        item.isPaid = (item.name.hashCode % int.parse(month)) == 0;
+      });
     });
   }
 
@@ -108,14 +121,33 @@ class _MembershipFeeState extends State<MembershipFee> {
             ),
           ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.end,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 10.0),
+                child: DropdownButton<String>(
+                  value: selectedMonth,
+                  items: <String>['1', '2', '3', '4', '5'].map((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text('Tháng $value'),
+                    );
+                  }).toList(),
+                  onChanged: (newValue) {
+                    setState(() {
+                      selectedMonth = newValue!;
+                      filterItemsByMonth(selectedMonth);
+                    });
+                  },
+                ),
+              ),
+              SizedBox(width: 60,),
               ElevatedButton(
                   onPressed: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context)=>MemberListScreen()));
                   },
                   child: Text("Quản lý Thành viên")
-              )
+              ),
             ],
           ),
           Padding(
@@ -140,6 +172,62 @@ class _MembershipFeeState extends State<MembershipFee> {
           ),
         ],
       ),
+    );
+  }
+}
+
+class TransparentMemButton extends StatelessWidget {
+  final VoidCallback onPressed;
+  final bool isSelected;
+  final Widget child;
+
+  const TransparentMemButton(
+      {required this.onPressed, required this.isSelected, required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        decoration: BoxDecoration(
+          color: isSelected ? Colors.transparent : Colors.transparent,
+          border: Border(
+            bottom: BorderSide(
+              width: 2.0,
+              color: isSelected ? Colors.black : Colors.transparent,
+            ),
+          ),
+        ),
+        padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+        child: child,
+      ),
+    );
+  }
+}
+
+class MemberShipWidget extends StatelessWidget {
+  final Member member;
+  final int index;
+  final ValueChanged<Member> onTap;
+
+  const MemberShipWidget(
+      {required this.member, required this.index, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: CircleAvatar(
+        child: Text('${index + 1}'),
+      ),
+      title: Text(member.name),
+      subtitle: Text('Hội phí: ${member.fee}'),
+      trailing: Icon(
+        member.isPaid ? Icons.check_circle : Icons.cancel,
+        color: member.isPaid ? Colors.green : Colors.red,
+      ),
+      onTap: () {
+        onTap(member);
+      },
     );
   }
 }
