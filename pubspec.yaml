@@ -88,6 +88,7 @@ flutter:
     - assets/icons/
     - assets/TableTenis/
     - assets/categories/
+    - assets/product/
   # For details regarding adding  from package dependencies, see
   # https://flutter.dev/assets-and-images/#from-packages
 

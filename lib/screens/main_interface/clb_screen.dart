@@ -4,6 +4,7 @@ import '../../widgets/components/ranking/custom_ranking.dart';
 import '../../widgets/components/ranking/list_member.dart';
 import '../../widgets/components/ranking/list_ranking.dart';
 import '../../widgets/model/club_model.dart';
+import '../clb_admin/membership_fee.dart';
 
 class RankingScreen extends StatefulWidget {
   const RankingScreen({super.key});
@@ -140,7 +141,6 @@ class _RankingScreenState extends State<RankingScreen> {
         return Container();
     }
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -201,7 +201,7 @@ class _RankingScreenState extends State<RankingScreen> {
                         ),
                         child: GestureDetector(
                           onTap: () {
-                            // Navigator.push(context, MaterialPageRoute(builder: (context) => ClubListScreen()));
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => MembershipFee()));
                           },
                           child: const Padding( // Thêm padding để khoảng cách giữa text và biên container đẹp hơn
                             padding: EdgeInsets.all(5.0),

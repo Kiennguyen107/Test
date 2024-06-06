@@ -72,7 +72,7 @@ class TestHomeScreen extends StatelessWidget {
               const SizedBox(
                 height: 15.0,
               ),
-              const TitlesTextWidget(label: "Latest arrival"),
+              const TitlesTextWidget(label: "Dụng cụ bóng bàn"),
               const SizedBox(
                 height: 15.0,
               ),
@@ -84,16 +84,19 @@ class TestHomeScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return Container(
                       width: size.width * 0.4,
-                      color: Colors.grey[200],
                       margin: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: Center(child: Text('Product $index')),
+                      child: Image.asset(
+                        'assets/product/$index.jpg', // Đường dẫn đến các hình ảnh
+                        fit: BoxFit.cover,
+                      ),
                     );
                   },
                 ),
               ),
-              const TitlesTextWidget(label: "Categories"),
+              const SizedBox(height: 10,),
+              const TitlesTextWidget(label: "Danh mục"),
               const SizedBox(
-                height: 15.0,
+                height: 10.0,
               ),
               GridView.count(
                 shrinkWrap: true,

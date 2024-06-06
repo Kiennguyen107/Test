@@ -30,12 +30,22 @@ class _ClubNotificationScreenState extends State<ClubNotificationScreen> {
   List<Notification> notifications = [
     Notification(
       title: 'Quy định',
-      content: 'Đây là quy định của câu lạc bộ...',
+      content: "Đây là quy định của câu lạc bộ:\n"
+          "1. Thành viên câu lạc bộ cần có trang phục chỉnh tề, phù hợp với quá trình tập luyện hoặc thi đấu (quần áo, giày,…)\n"
+          "2. Mỗi thành viên của clb cần có ý thức, nghiêm túc và có trách nhiệm trong quá trình tập luyện.\n"
+          "3. Tuân thủ nghiêm túc các quy định về thời gian của câu lạc bộ. Trong các trường hợp ngoại lệ, cần có được sự đồng ý của ban chủ nhiệm câu lạc bộ.\n"
+          "4. Có thái độ tôn trọng với mọi thành viên tron clb.\n"
+          "5. Có ý thức và tinh thần giữa vệ sinh chung cho câu lạc bộ và thực hiện tổng vệ sinh vào các ngày đã được quy định.\n"
+          "6. Thành viên của câu lạc bộ cần giữa gìn bàn đánh cùng các trang thiết bị chung của clb. Đồ cá nhân cần tự bảo quản.\n"
+          "7. Thực hiện đóng lệ phí hàng tháng đầy đủ và đúng giờ theo quy định của câu lạc bộ.\n"
+          "8. Tuân thủ theo sự điều phối của ban chủ nhiệm câu lạc bộ trong thi đấu và giao lưu với các câu lạc bộ khác.\n"
+          "9. Thành viên câu lạc bộ có cổ động viên đi cùng trong các đợt thi đấu, giao lưu cần đảm bảo về tác phong ăn mặc, nói chuyện văn minh – văn hóa.\n",
       timestamp: DateTime.now(),
       isRead: true,
       imagePath: '',
     ),
   ];
+  int id_right = 3;
 
   void addNotification(Notification notification) {
     setState(() {
@@ -109,7 +119,7 @@ class _ClubNotificationScreenState extends State<ClubNotificationScreen> {
                 children: [
                   Text(notification.title, style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),),
                   SizedBox(width: 8,),
-                  Text(DateFormat('dd/MM/yyyy HH:mm').format(notification.timestamp)),
+                  Text(DateFormat('HH:mm').format(notification.timestamp)),
                 ],
               ),
               subtitle: Text(
@@ -121,11 +131,12 @@ class _ClubNotificationScreenState extends State<ClubNotificationScreen> {
               trailing: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
+                  // if (id_right != 3)
                   IconButton(
                     icon: Icon(Icons.edit),
                     onPressed: () => navigateToAddNotification(index: index),
                   ),
-                  if (notification.title != 'Quy định')
+                  // if (notification.title != 'Quy định')
                     IconButton(
                       icon: Icon(Icons.delete),
                       onPressed: () => deleteNotification(index),
@@ -137,10 +148,12 @@ class _ClubNotificationScreenState extends State<ClubNotificationScreen> {
           );
         },
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: id_right != 1
+          ? FloatingActionButton(
         onPressed: navigateToAddNotification,
         child: Icon(Icons.add),
-      ),
+      )
+          : null,
     );
   }
 }

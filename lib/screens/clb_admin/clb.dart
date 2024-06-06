@@ -1,12 +1,9 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import '../../widgets/components/consts/clb_consts/clb_list_constants.dart';
 import '../../widgets/model/clb_list.dart';
 import 'creat_club_screen.dart';
-
 
 class ClubListScreen extends StatefulWidget {
   @override
@@ -65,7 +62,12 @@ class _ClubListScreenState extends State<ClubListScreen> {
         automaticallyImplyLeading: true,
         title: Text(
           'Danh sách CLB',
-          style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.black, decoration: TextDecoration.none),
+          style: TextStyle(
+            fontSize: 30,
+            fontWeight: FontWeight.bold,
+            color: Colors.black,
+            decoration: TextDecoration.none,
+          ),
         ),
       ),
       body: ListView.builder(
@@ -77,7 +79,11 @@ class _ClubListScreenState extends State<ClubListScreen> {
               contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 16.0),
               title: Row(
                 children: [
-                  Text(club.name, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
+                  Text(
+                    club.name,
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ],
               ),
               subtitle: Text(
@@ -90,14 +96,18 @@ class _ClubListScreenState extends State<ClubListScreen> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   if (id_right != 3)
-                  IconButton(
-                    icon: Icon(Icons.edit),
-                    onPressed: () => navigateToAddClub(index: index),
-                  ),
+                    IconButton(
+                      icon: Icon(Icons.edit),
+                      onPressed: () => navigateToAddClub(index: index),
+                    ),
                   if (id_right != 3)
+                    IconButton(
+                      icon: Icon(Icons.delete),
+                      onPressed: () => deleteClub(index),
+                    ),
                   IconButton(
-                    icon: Icon(Icons.delete),
-                    onPressed: () => deleteClub(index),
+                    icon: Icon(Icons.add),
+                    onPressed: () => print('hello'),
                   ),
                 ],
               ),
@@ -135,7 +145,7 @@ class ClubDetailsScreen extends StatelessWidget {
             Center(
               child: CircleAvatar(
                 radius: 100,
-                backgroundImage: club.imageUrl.isNotEmpty ? FileImage(File(club.imageUrl)) : null,
+                backgroundImage: club.imageUrl.isNotEmpty ? AssetImage(club.imageUrl) : null,
                 child: club.imageUrl.isEmpty
                     ? Icon(Icons.camera_alt, size: 80, color: Colors.grey)
                     : null,

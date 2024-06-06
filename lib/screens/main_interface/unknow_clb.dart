@@ -14,7 +14,8 @@ class UnknowClb extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home Screen'),
+        automaticallyImplyLeading: false,
+        title: Text('Câu lạc bộ', style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),),
       ),
       body: Center(
         child: Column(

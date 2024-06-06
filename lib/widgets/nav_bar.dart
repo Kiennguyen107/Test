@@ -7,6 +7,7 @@ import 'package:test_project/screens/main_interface/pick_create_match_sceen.dart
 import 'package:test_project/screens/main_interface/clb_screen.dart';
 import 'package:test_project/screens/main_interface/test_home_screen.dart';
 import 'package:test_project/screens/main_interface/user_screen.dart';
+import '../screens/clb_admin/add_match_page.dart';
 import '../screens/clb_admin/input_score_screen.dart';
 import '../screens/main_interface/notification_screen.dart';
 import '../screens/main_interface/unknow_clb.dart';
@@ -44,6 +45,7 @@ class _TestBottomNavWithAnimatedIconsState extends State<TestBottomNavWithAnimat
     ];
     }else{
       pages = [
+        // AddMatchPage(),
         UnknowClb(),
         PickCreateMatchScreen(),
         TestHomeScreen(),

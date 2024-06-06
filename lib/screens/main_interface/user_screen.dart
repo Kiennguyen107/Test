@@ -25,8 +25,8 @@ class User {
 // Tạo một instance của User
 final User userData = User(
   profileImage: 'assets/profile.png', // Đường dẫn ảnh trong máy
-  fullName: 'John Doe',
-  email: 'johndoe@example.com',
+  fullName: 'Hoàng Tuấn Trung',
+  email: 'Hoangtuantrung0223@gmail.com',
   sdt: '0123456789',
   clb: 'CLB Bóng Bàn Resco',
 );
