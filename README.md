@@ -35,11 +35,11 @@
    ```bash
    flutter run
    ```
-## Các bước thực hiện:
-### Bước 1: Khởi tạo dự án
+### Các bước thực hiện:
+#### Bước 1: Khởi tạo dự án
 1. Clone file code dự án được tạo sẵn trên Github về để thực hiện làm bài tập lớn
 2. Mở ứng dụng VS Code và mở thư mục vừa clone về `flutter-final-project-Kiennguyen107`
-### Bước 2: Tích hợp Firebase vào ứng dụng
+#### Bước 2: Tích hợp Firebase vào ứng dụng
 - **Firebase là gì?** Firebase là một nền tảng phát triển ứng dụng được Google cung cấp, hỗ trợ các nhà phát triển xây dựng và quản lý ứng dụng một cách nhanh chóng và hiệu quả. Nó cung cấp một bộ công cụ và dịch vụ phong phú cho cả ứng dụng di động và web.
 - **Lợi ích khi sử dụng Firebase**: Tích hợp nhanh chóng với nhiều nền tảng (iOS, Android, Web). Không cần quản lý cơ sở hạ tầng phức tạp. Hỗ trợ mở rộng ứng dụng khi số lượng người dùng tăng.
 - **Giải pháp:** Firebase là giải pháp mạnh mẽ và toàn diện, giúp các nhà phát triển tập trung vào việc tạo ra giá trị cho người dùng thay vì phải giải quyết các vấn đề kỹ thuật phức tạp.
@@ -258,7 +258,9 @@
     ```
   Còn đối với ***Playlist*** và ***Event*** chúng ta làm tương tự đầy đủ các thao tác CRUD cho 2 đối tượng này.
 
-4. Kiểm thử tự động
+#### Bước 4: Kiểm thử
+
+1. Kiểm thử tự động
  - Với kiểm thử tự động, firebase hỗ trợ khá ít cho việc kiểm thử với flutter và dart và hầu như không có tài liệu. Gây ra nhiều khó khăn cho việc kiểm thử và gần như không thể thực hiện kiểm thử đơn vị hay UI, UX được.
  - Cho nên đối với việc kiểm thử chỉ có thể thực hiện với các model để kiểm tra xem các trường dữ liệu có đúng khi đưa lên firebase được hay không
  - Thực hiện kiểm thử bằng cách gõ lệnh vào terminal như sau:
@@ -266,7 +268,7 @@
     ```bash
     flutter test
     ```
-5. Screenshots hoặc video demo về ứng dụng và quá trình kiểm thử tự động.
+2. Screenshots hoặc video demo về ứng dụng và quá trình kiểm thử tự động.
  - Kiểm thử tự động:
  
     ![](assets/flutterTest.png)
