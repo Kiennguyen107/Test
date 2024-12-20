@@ -21,7 +21,7 @@
 - Biết áp dụng CI/CD với GitHub Actions để tự động hóa quy trình kiểm thử và triển khai.
 
 ## Báo cáo kết quả
-### Chạy thử ứng dụng
+### Chạy thử ứng dụng:
 1. Tải mã nguồn từ repository.
     ```bash
     git clone https://github.com/HUMG-IT/flutter-final-project-Kiennguyen107.git
@@ -67,7 +67,7 @@
           options: DefaultFirebaseOptions.currentPlatform,
       );
       ```
-### Bước 3: Phát triển dự án và kiểm thử
+#### Bước 3: Phát triển dự án và kiểm thử
 1. Tạo model để quản lý. Sử dụng `dart data class generator extension` để tạo ra các class model như:
   - User model trong file `user_model.dart` để quản lý các trường thông tin người dùng dễ dàng hơn:
       ```dart
