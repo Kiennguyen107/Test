@@ -1,4 +1,3 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/clRq4viz)
 [![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-2e0aaae1b6195c2367325f4f02e2d04e9abb55f0b24a779b69b11b9e10269abc.svg)](https://classroom.github.com/online_ide?assignment_repo_id=17110087&assignment_repo_type=AssignmentRepo)
 
 # Bài tập lớn - Ứng dụng nghe nhạc tích hợp Firebase
@@ -11,6 +10,9 @@
 ## Giới thiệu
 Đây là ứng dụng nghe nhạc đơn giản với Dart và Flutter tích hợp với Firebase để cung cấp tính năng hiện đại và dễ sử dụng. Ứng dụng cho phép người dùng phát nhạc, quản lý danh sách phát và đồng bộ hóa dữ liệu qua đám mây firebase, mang lại trải nghiệm mượt mà và thuận tiện. Đây là lựa chọn lý tưởng cho những ai yêu thích âm nhạc và muốn khám phá công nghệ hiện đại. Một ứng dụng di động hoàn chỉnh sử dụng Flutter và Dart, áp dụng các kiến thức đã học về lập trình giao diện người dùng, quản lý trạng thái, kiểm thử tự động và CI/CD với GitHub Actions.
 
+## Sản phẩm demo:
+Bạn có thể truy cập trang web này để trải nghiệm thử ứng dụng: **https://finalproject-ac931.web.app**
+
 ## Mục tiêu
 - Trải nghiệm người dùng đơn giản: Cung cấp giao diện thân thiện, dễ sử dụng, phù hợp với mọi đối tượng người dùng.
 - Hiểu và áp dụng các cách quản lý trạng thái trong ứng dụng Flutter.
@@ -21,7 +23,7 @@
 - Biết áp dụng CI/CD với GitHub Actions để tự động hóa quy trình kiểm thử và triển khai.
 
 ## Báo cáo kết quả
-### Chạy thử ứng dụng:
+### Sử dụng mã nguồn:
 1. Tải mã nguồn từ repository.
     ```bash
     git clone https://github.com/HUMG-IT/flutter-final-project-Kiennguyen107.git
@@ -67,7 +69,7 @@
           options: DefaultFirebaseOptions.currentPlatform,
       );
       ```
-#### Bước 3: Phát triển dự án và kiểm thử
+#### Bước 3: Phát triển dự án
 1. Tạo model để quản lý. Sử dụng `dart data class generator extension` để tạo ra các class model như:
   - User model trong file `user_model.dart` để quản lý các trường thông tin người dùng dễ dàng hơn:
       ```dart
